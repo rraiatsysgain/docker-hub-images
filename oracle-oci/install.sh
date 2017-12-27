@@ -7,6 +7,7 @@ v="$v."
 cp -r $v .
 echo "Initializing terraform..."
 terraform init \
+-input=false \
 -backend-config="bucket=$TF_VAR_terraform_remote_bucket" \
 -backend-config="key=$TF_VAR_deployment_auuid/terraform.tfstate" \
 -backend-config="region=$TF_VAR_terraform_remote_bucket_region" \ 
