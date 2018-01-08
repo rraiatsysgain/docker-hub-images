@@ -21,8 +21,6 @@ RUN apk add bash openssl && \
 
 COPY install.sh /home/install.sh
 
-COPY init.sh /home/init.sh
-
 WORKDIR /home
 
-CMD ["sh", "-c", "sleep 18000"]
+CMD ["sh", "-c", "sleep 900"]
