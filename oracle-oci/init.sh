@@ -1,3 +1,4 @@
+curl -o tf_remote_config.tf $TERR_REMOTE_STATE_URL
 ls
 pwd
 echo "Initializing terraform..."
