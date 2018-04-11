@@ -1,4 +1,4 @@
-FROM azuresdk/azure-cli-python:latest
+FROM microsoft/azure-cli:latest
 
 COPY install.sh /home/install.sh
 COPY init.sh /home/init.sh
