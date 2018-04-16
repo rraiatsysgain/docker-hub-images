@@ -7,6 +7,6 @@ curl -o access_key.pem $TF_VAR_AWS_SECRET_ACCESS_KEY
 #cp -r $v .
 unzip soln.zip
 
-export AWS_ACCESS_KEY_ID=$TF_VAR_AWS_ACCESS_KEY_ID
-export AWS_DEFAULT_REGION=$TF_VAR_AWS_DEFAULT_REGION
-export AWS_SECRET_ACCESS_KEY=$(cat access_key.pem)
+#export AWS_ACCESS_KEY_ID=$TF_VAR_AWS_ACCESS_KEY_ID
+#export AWS_DEFAULT_REGION=$TF_VAR_AWS_DEFAULT_REGION
+#export AWS_SECRET_ACCESS_KEY=$(cat access_key.pem)
