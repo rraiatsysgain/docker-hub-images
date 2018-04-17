@@ -8,7 +8,7 @@ cat <<EOF > aws_credential.tf
 provider "aws" {
   region="$TF_VAR_AWS_DEFAULT_REGION"
   access_key="$TF_VAR_AWS_ACCESS_KEY_ID"
-  secret_key="$TF_VAR_AWS_SECRET_ACCESS_KEY"
-  #secret_key="$(cat access_key.pem)"
+  #secret_key="$TF_VAR_AWS_SECRET_ACCESS_KEY"
+  secret_key="$(cat access_key.pem)"
 }
 EOF
