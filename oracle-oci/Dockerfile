@@ -4,7 +4,15 @@ ENV TERRAFORM_VERSION=0.11.7
 ENV TERRAFORM_SHA256SUM=6b8ce67647a59b2a3f70199c304abca0ddec0e49fd060944c26f666298e23418
 ENV ORACLE_BARE_METAL_CLOUD=2.1.12
 
-RUN apk add --update python git curl openssh && \
+RUN apk add --update \
+    python \
+    python-dev \
+    py-pip \
+    build-base \
+  && pip install virtualenv \
+  && rm -rf /var/cache/apk/*
+  
+RUN apk add --update git curl openssh && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     sha256sum -cs terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
@@ -19,6 +27,7 @@ RUN apk add bash openssl && \
       cp -r /usr/local/oracle/linux_amd64 ~/.terraform.d/plugins/ && \
       rm -rf /usr/local/linux.tar.gz
 
+  
 COPY install.sh /home/install.sh
 
 COPY init.sh /home/init.sh
