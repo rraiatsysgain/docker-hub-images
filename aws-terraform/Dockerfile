@@ -10,7 +10,10 @@ RUN apk add --update git curl openssh && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
+RUN apk add bash openssl
+
 COPY install.sh /home/install.sh
+COPY init.sh /home/init.sh
 
 WORKDIR /home
 
