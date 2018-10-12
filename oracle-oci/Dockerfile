@@ -21,7 +21,10 @@ RUN apk add --update git curl bash openssl openssh && \
 
 COPY install.sh /home/install.sh
 COPY init.sh /home/init.sh
+COPY ocicurl.sh /home/ocicurl.sh
 
 WORKDIR /home
+
+RUN chmod +x ocicurl.sh
 
 CMD ["sh", "-c", "sleep 18000"]
