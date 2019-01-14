@@ -9,10 +9,10 @@
 
 function ocicurl {
     # TODO: update these values to your own
-	local tenancyId=$TF_VAR_tenancy_ocid;
-	local authUserId=$TF_VAR_user_ocid;
-	local keyFingerprint=$TF_VAR_fingerprint;
-	local privateKeyPath="bmcs_api_key.pem";
+    local tenancyId=$TF_VAR_tenancy_ocid;
+    local authUserId=$TF_VAR_user_ocid;
+    local keyFingerprint=$TF_VAR_fingerprint;
+    local privateKeyPath="bmcs_api_key.pem";
 
     local alg=rsa-sha256
     local sigVersion="1"
