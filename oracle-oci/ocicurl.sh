@@ -124,21 +124,6 @@ function rawurlencode {
 
 if [ -n "$TF_VAR_listingId" ] && [ -n "$TF_VAR_listingResourceVersion" ] 
 	then
-		#this call works
-		#ocicurl iaas.us-ashburn-1.oraclecloud.com get "/20160918/instances?compartmentId=ocid1.compartment.oc1..aaaaaaaalgsz4a6kidhen4x4i6gcljyvrj7s4i3ug32si44quv2ugislqsva"
-
-
-		#this call doesn't
-		#ocicurl iaas.us-ashburn-1.oraclecloud.com get "/20160918/appCatalogListings"
-
-		#get listing version
-		#$ocicurl iaas.us-ashburn-1.oraclecloud.com get /20160918/appCatalogListings/$TF_VAR_listingId/resourceVersions 
-
-
-		#get agreement
-		ocicurl iaas.us-ashburn-1.oraclecloud.com get "/20160918/appCatalogListings/$TF_VAR_listingId/resourceVersions/$TF_VAR_listingResourceVersion/agreements" -o agreement.json 
-		
-		#agreement_json=$(ocicurl iaas.us-ashburn-1.oraclecloud.com get "/20160918/appCatalogListings/$TF_VAR_listingId/resourceVersions/$TF_VAR_listingResourceVersion/agreements" | jq --arg compartmentId $TF_VAR_compartment_ocid '.["compartmentId"] = $compartmentId')		
 		agreement_updated=$(jq --arg compartmentId $TF_VAR_compartment_ocid '.["compartmentId"] = $compartmentId' < agreement.json)	
 		echo "$agreement_updated" > "agreement_updated.json"
 		
