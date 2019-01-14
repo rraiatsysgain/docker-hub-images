@@ -124,10 +124,15 @@ function rawurlencode {
 
 if [ -n "$TF_VAR_listingId" ] && [ -n "$TF_VAR_listingResourceVersion" ] 
 	then
+	
+		#get agreement	
+		ocicurl iaas.us-ashburn-1.oraclecloud.com get "/20160918/appCatalogListings/$TF_VAR_listingId/resourceVersions/$TF_VAR_listingResourceVersion/agreements" -o agreement.json 
+		
+		#create agreement payload
 		agreement_updated=$(jq --arg compartmentId $TF_VAR_compartment_ocid '.["compartmentId"] = $compartmentId' < agreement.json)	
 		echo "$agreement_updated" > "agreement_updated.json"
 		
-		#subscribe terms
+		# send updated payload and subscribe terms
 		ocicurl iaas.us-ashburn-1.oraclecloud.com post ./agreement_updated.json "/20160918/appCatalogSubscriptions"		
 		
 fi
