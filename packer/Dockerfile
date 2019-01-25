@@ -14,8 +14,6 @@ RUN apk add --update git curl openssh && \
 
 COPY install.sh /home/install.sh
 
-COPY init.sh /home/init.sh
-
 WORKDIR /home
 
 CMD ["sh", "-c", "sleep 18000"]
